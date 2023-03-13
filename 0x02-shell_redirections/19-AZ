@@ -1,2 +1,2 @@
 #!/bin/bash
-cat stdin | tr 'Ac' 'Ze'
+cat /dev/stdin | tr 'Ac' 'Ze'
