@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -d '-' -f1 /dev/stdin | tail -n +2 testing | sort testing | uniq -ic | sort -nr | cut -c 9-
+tail -n +2 | cut -f -1 | sort -k 1 | uniq -c | sort -rnk 1 | head -11 | rev | cut -d ' ' -f -1 | rev
