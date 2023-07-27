@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# displays the time 12:59
+
+count=0
+
+while [ $count -le 12 ]
+do
+	echo "Hour: $count"
+	count2=1
+	while [ $count2 -lt 60 ]
+	do
+		echo "$count2"
+		(( count2++ ))
+	done
+	(( count++ ))
+done
