@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# displays numbers from 1 to 20
+# if nber is 4 displays badluck in chine
+# if nu ber is 9 displays badluck in japan
+# if number is 17 displays badluck in italy
+
+count=1
+
+while [ $count -le 20 ]
+do
+	echo "$count"
+	case $count in
+	"4") echo "bad luck from China";;
+	"9") echo "bad luck from Japan";;
+	"17") echo "bad luck from Italy";;
+	esac
+	(( count++ ))
+done
