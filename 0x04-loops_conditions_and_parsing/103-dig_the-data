@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# print THE COUNT OF IP AND HTTP STATUS CODE FORAPACHE LOG FILES
+
+awk '{print $1,$9}' apache-access.log | sort | uniq -c | sort -rn
