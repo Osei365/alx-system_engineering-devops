@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# creates a file with its PID in it
+# displays to ifinity and beyond
+# displays I hate the kill command and
+# displays why u no love me with signals attached
+
+
+remover() {
+	rm /var/run/myscript.pid
+	exit
+}
+
+echo $$ > /var/run/myscript.pid
+
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap 'echo "Y U no love me?!"' SIGINT
+	trap 'echo "I hate the kill command" && remover' SIGTERM
+	trap 'remover' SIGQUIT
+done
