@@ -22,7 +22,8 @@ int infinite_while(void)
  */
 int main(void)
 {
-	int pid, a = 0;
+	int a = 0;
+	pid_t pid;
 
 	while (a < 5)
 	{
