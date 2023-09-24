@@ -5,13 +5,13 @@ file {'/etc/ssh/ssh_config':
 }
 
 file_line {'identity files':
-  path   => '/etc/ssh/ssh_config',
   ensure => present,
+  path   => '/etc/ssh/ssh_config',
   line   => '    IdentityFile ~/.ssh/school',
 }
 
 file_line {'password auth':
-  path   => '/etc/ssh/ssh_config',
   ensure => present,
+  path   => '/etc/ssh/ssh_config',
   line   => '    PasswordAuthentication no'
 }
