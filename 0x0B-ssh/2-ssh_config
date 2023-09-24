@@ -1,0 +1,3 @@
+# config file options
+IdentityFile ~/.ssh/school
+PasswordAuthentication no
