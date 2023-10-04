@@ -2,8 +2,8 @@
 #installs load balancer
 sudo apt-get update
 sudo apt-get install --no-install-recommends software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy
-sudo apt-get install -y haproxy
+sudo add-apt-repository ppa:vbernat/haproxy-2.8
+sudo apt-get install -y haproxy=2.8.\*
 echo "
 frontend web-front
     bind *:80
