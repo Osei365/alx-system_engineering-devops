@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# make nginx installation work
+
+service nginx restart
