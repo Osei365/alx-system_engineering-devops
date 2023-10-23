@@ -15,7 +15,7 @@ if __name__ == "__main__":
     uname = user.json().get('username')
     todos = requests.get('{}users/{}/todos'.format(home, arg)).json()
     with open(filename, 'w', newline="") as csvfile:
-        csvwriter = csv.writer(csvfile, quotechar='"', quoting=csv.QUOTE_ALL)
+        csvwriter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for t in todos:
             row = ['{}'.format(t.get('userId')),
                    '{}'.format(uname),
