@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# gets the whoami of a user
+sudo -u "${1}" whoami
