@@ -9,10 +9,10 @@ import requests
 if __name__ == "__main__":
     filename = 'todo_all_employees.json'
     home = 'https://jsonplaceholder.typicode.com/'
+    users = requests.get(home + 'users').json()
     with open(filename, 'w') as f:
         dic = {}
-        for i in range(1, 11):
-            user = requests.get('{}users/{}'.format(home, i)).json()
+        for user in users:
             uname = user.get('username')
             user_id = user.get('id')
             todos = requests.get('{}users/{}/todos'.format(home, user_id))
