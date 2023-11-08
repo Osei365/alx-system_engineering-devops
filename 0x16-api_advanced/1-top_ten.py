@@ -12,9 +12,9 @@ def top_ten(subreddit):
     p = {'limit': 10}
     r = requests.get(url, allow_redirects=False,
                      headers=headers, params=p)
-    rj = r.json()
-    if rj.get('error') == 404:
+    if r.status_code != 200:
         print(None)
         return
+    rj = r.json()
     children = rj.get('data').get('children')
     [print(child.get('data').get('title')) for child in children]
