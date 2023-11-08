@@ -6,7 +6,7 @@ import requests
 
 def count_words(subreddit, word_list=[], after=None, words=None):
     if words is None:
-        words = []
+        words = {}
     url = 'https://www.reddit.com/r/{}/hot.json?limit=100&after={}'.format(
         subreddit, after)
     headers = {
@@ -24,15 +24,10 @@ def count_words(subreddit, word_list=[], after=None, words=None):
         title = title.lower()
         for word in word_list:
             if word.lower() in title:
-                words.append(word.lower())
+                word = word.lower()
+                words[word] = words.get(word, 0) + title.count(word)
     if after:
         return count_words(subreddit, word_list, after, words)
-    dic = {}
-    for wd in words:
-        if wd in dic.keys():
-            dic[wd] += 1
-        else:
-            dic[wd] = 1
-    sorted_dic = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
+    sorted_dic = sorted(words.items(), key=lambda x: (-x[1], x[0]))
     for wd, freq in sorted_dic:
         print("{}: {}".format(wd, freq))
