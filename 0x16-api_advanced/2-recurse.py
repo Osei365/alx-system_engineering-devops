@@ -18,7 +18,9 @@ def recurse(subreddit, hot_list=[], count=0, next_page=None):
     next_page = rj.get('next_page')
     count += rj.get('dist')
     children = rj.get('children')
-    [hot_list.append(child.get('data').get('title')) for child in children]
+    for child in children:
+        title = child.get('data').get('title')
+        hot_list.append(title)
     if next_page is not None:
         return recurse(subreddit, hot_list, count, next_page)
     return hot_list
