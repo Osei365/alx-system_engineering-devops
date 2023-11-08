@@ -4,7 +4,7 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[], count=0, next_page=None):
+def recurse(subreddit, hot_list=[], after=None):
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {
         'User-Agent': 'Mozilla/5.0'
@@ -15,12 +15,11 @@ def recurse(subreddit, hot_list=[], count=0, next_page=None):
     if r.status_code != 200:
         return (None)
     rj = r.json().get('data')
-    next_page = rj.get('next_page')
-    count += rj.get('dist')
+    after = rj.get('after')
     children = rj.get('children')
     for child in children:
         title = child.get('data').get('title')
         hot_list.append(title)
-    if next_page is not None:
-        return recurse(subreddit, hot_list, count, next_page)
+    if after:
+        return recurse(subreddit, hot_list, after)
     return hot_list
