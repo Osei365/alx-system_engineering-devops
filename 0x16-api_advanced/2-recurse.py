@@ -5,13 +5,13 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=100&after={}'.format(
+        subreddit, after)
     headers = {
         'User-Agent': 'Mozilla/5.0'
         }
-    p = {'limit': 50, 'next_page': next_page, 'count': count}
     r = requests.get(url, allow_redirects=False,
-                     headers=headers, params=p)
+                     headers=headers)
     if r.status_code != 200:
         return (None)
     rj = r.json().get('data')
